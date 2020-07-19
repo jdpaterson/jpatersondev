@@ -1,10 +1,10 @@
 'use strict';
 
 module.exports = {
-  url: 'https://lumen.netlify.com',
+  url: 'https://jpaterson.dev',
   pathPrefix: '/',
-  title: 'Blog by John Doe',
-  subtitle: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+  title: 'Blog by J. Paterson',
+  subtitle: 'My learnings in web development.',
   copyright: '© All rights reserved.',
   disqusShortname: '',
   postsPerPage: 4,
@@ -25,18 +25,18 @@ module.exports = {
     }
   ],
   author: {
-    name: 'John Doe',
+    name: 'J. Paterson',
     photo: '/photo.jpg',
-    bio: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+    bio: 'I am a web developer living in beautiful Vancouver, BC. I work mainly with React, Rails, Node, GraphQL, and Docker, but I am interested in all things web related',
     contacts: {
-      email: '',
+      email: 'contact@jpatersondev.com',
       facebook: '#',
       telegram: '#',
-      twitter: '#',
-      github: '#',
+      twitter: '#jaydp123',
+      github: '#jdpaterson',
       rss: '',
       vkontakte: '',
-      linkedin: '#',
+      linkedin: '#jaydp123',
       instagram: '#',
       line: '',
       gitlab: '',
