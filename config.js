@@ -15,35 +15,24 @@ module.exports = {
       label: 'Articles',
       path: '/'
     },
-    {
-      label: 'About me',
-      path: '/pages/about'
-    },
-    {
-      label: 'Contact me',
-      path: '/pages/contacts'
-    }
+    // {
+    //   label: 'About me',
+    //   path: '/pages/about'
+    // },
+    // {
+    //   label: 'Contact me',
+    //   path: '/pages/contacts'
+    // }
   ],
   author: {
     name: 'J. Paterson',
-    photo: '/photo.jpg',
+    photo: '/profile.jpg',
     bio: 'I am a web developer living in beautiful Vancouver, BC. I work mainly with React, Rails, Node, GraphQL, and Docker, but I am interested in all things web related',
     contacts: {
       email: 'contact@jpatersondev.com',
-      facebook: '#',
-      telegram: '#',
-      twitter: '#jaydp123',
-      github: '#jdpaterson',
-      rss: '',
-      vkontakte: '',
-      linkedin: '#jaydp123',
-      instagram: '#',
-      line: '',
-      gitlab: '',
-      weibo: '',
-      codepen: '',
-      youtube: '',
-      soundcloud: '',
+      twitter: 'jaydp123',
+      github: 'jdpaterson',
+      linkedin: 'jaydp123',
     }
   }
 };
