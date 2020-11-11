@@ -1,6 +1,6 @@
 ---
 template: post
-title: What is Gatsby?
+title: Getting Started...how this blog was built pt.1 - What is Gatsby?
 slug: getting-started-how-this-blog-was-built-pt-1
 draft: false
 date: 2020-07-20T14:48:46.815Z
