@@ -3,7 +3,7 @@ template: post
 title: Getting Started...how this blog was built pt.1 - What is Gatsby?
 slug: getting-started-how-this-blog-was-built-pt-1
 draft: false
-date: 2020-07-20T14:48:46.815Z
+date: 2020-08-01T14:48:46.815Z
 description: "For our first blog entry we'll start with an easy one: how to
   build a blog! We will be looking at Gatsby, Gatsby Starters, Netflify, Netlify
   CMS, and the \"Lumen\" Gatsby Starter in particular."
