@@ -2,8 +2,8 @@
 template: post
 title: "Jubuntu: My Docker Work Environment"
 slug: jubuntu-my-docker-work-environment
-draft: true
-date: 2020-11-11T21:11:13.244Z
+draft: false
+date: 2020-11-01T21:11:13.244Z
 description: "A detailed look at my custom Docker image that I use as a work
   environment: Jubuntu"
 category: Docker
@@ -72,7 +72,7 @@ RUN apt update && apt install -y \
     zlib1g-dev \
     zsh
 ```
-Ok next up I install yarn and postgres, not in any particular order, I could move these installs down a bit in the file, probably I'll do that someday. Mostly I just followed the instructions for the respective websites, minimally translated into Docker friendly syntax.
+Ok next up I do some prep for yarn, and install postgres, not in any particular order, I could move these installs down a bit in the file, probably I'll do that someday. Mostly I just followed the instructions for the respective websites, minimally translated into Docker friendly syntax.
 
 ```
 # Postgres
@@ -85,3 +85,38 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg ma
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 ```
+
+Alright now I set up the jubuntu user and group, this allows the user to use sudo command if they ever need to while running the container: 
+
+```
+RUN groupadd -r -g $GROUP_ID jubuntu
+RUN useradd -rm -d /home/jubuntu -s /bin/bash -g root -G jubuntu -u $USER_ID jubuntu
+RUN usermod -aG sudo jubuntu
+RUN echo "jubuntu ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+```
+
+uhm ok I think other than that it is more of the same, I install node, nvm, yarn. I install the GoLang programming language. I copy a custom .zshrc file over the container with some of my personal preferences. 
+
+Lastly I set the working directory to /home/jubuntu/workdir, and I set the default command to be zsh:
+
+```
+COPY ./setup/.zshrc /home/jubuntu/.zshrc
+RUN chmod g+rwx /home/jubuntu/.zshrc
+USER jubuntu
+WORKDIR /home/jubuntu/workdir
+
+CMD ["zsh"]
+```
+
+## Run the container
+
+Now when we run the container, we want to do a couple things:
+1.) We want to expose some ports so that, for web developers for example, we can run our code in the container, and the results will display in our browser.
+2.) Mount a volume so that we can change files from our host machine, and the changes will be reflected in the container. For instance we want to change our code using a code editor like VS-Code. 
+
+So to run the container and expose some ports is easy enough, it looks like: `-p 3000:3000` where the first 3000 is the port of your host machine (my desktop PC), and the second 3000 is the port that the first 3000 will be routed to. So if you are running a web server inside the container at port 3000, we want to tell our computer to route any requests to our host port 3000 to route them to the container at port 3000, this way we can go to localhost:3000 in our browser, and that request will get routed to port 3000 of the router, where our server is running. 
+
+To mount a volume, also super easy, we just choose a directory that we want to mount to the container (probably the code that you are working on), and we mount it to a directory within the Jubuntu container. So looks like this: `-v /Users/jaydp123/projects:/home/jubuntu/workdir` where I mount everything in my projects directory, to the jubuntu/workdir directory. Now any changes I make from my host machine (through VS Code), will be reflected in the container. Saving me from having to rebuild the container each time! 
+
+Ok that is enough for today, thanks for reading!
+
