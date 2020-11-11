@@ -8,6 +8,13 @@ description: Commit
 category: Coding
 tags:
   - plotly
+  - open-source
+  - dash
+  - python
+  - source tree
+  - git
+  - javascript
+  - ""
 ---
 Recently, our team had built a demo of Artificial Intelligence at work, which you can (eventually) [see here](https://ai-demo.cctech.io/). This demo uses the Python-based [Dash library](https://plotly.com/dash/) to efficiently render large amounts of data on some 2D or 3D chart, ideal for ML/AL data visualization. Anyway, I wasn't particularly involved in that aspect, but I was assigned the task of fixing a bug in the 3D Scatterplot that we were using. In this post I would like to explain how, by fixing the bug in the open-source library that drives Dash, I was able to resolve [this bug](https://github.com/plotly/plotly.js/issues/4550) not only for my team, but for the whole world! 
 
@@ -39,4 +46,6 @@ Since calling preventDefault() on a touchstart or the first touchmove event of a
 
 So with that suggestion in mind, I simply removed the `ev.preventDefault()`s from the `touchstart` and `touchend` event listeners, and left it in the `touchmove` listener, and voila! Everything was working! [See this commit for the solution](https://github.com/gl-vis/gl-plot3d/pull/31/commits/8f96f0362366394a188b2f7451faf4b48da85433).
 
-At this point it was just a matter of coordinating with the folks at Plotly where to submit my PRs, turns out the original code had been moved to a [separate library](https://github.com/gl-vis/gl-plot3d/) so I had to make my PR there, and then submit a [version bump PR ](https://github.com/plotly/plotly.js/pull/5239)to the Plotly.js library.
+At this point it was just a matter of coordinating with the folks at Plotly where to submit my PRs, turns out the original code had been moved to a [separate library](https://github.com/gl-vis/gl-plot3d/) so I had to make my PR there, and then submit a [version bump PR ](https://github.com/plotly/plotly.js/pull/5239)to the Plotly.js library. Eventually these changes will be reflected in the dash-core-components library when they upgrade their version of plotly.js.
+
+Thanks for reading!
