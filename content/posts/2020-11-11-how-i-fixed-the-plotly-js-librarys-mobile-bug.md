@@ -3,7 +3,7 @@ template: post
 title: How I Fixed the Plotly.js Library's Mobile Bug
 slug: how-i-fixed-the-plotly-js-library-mobile-bug
 draft: false
-date: 2020-11-11T03:04:32.949Z
+date: 2020-10-02T02:04:32.949Z
 description: A walkthrough of my thought-process in fixing a bug in the plotly.js library
 category: Open-Source
 tags:
