@@ -19,3 +19,5 @@ Has a C-style syntax + async/await functionality, weakly typed, single-class inh
 Used to think async/await was just a JS es2017 thing, I was wrong! 
 
 Easy to create an app, VSCode, install the extensions, run flutter doctor. VS Code extension has an emulator built-in!
+
+Simply run it and voila!
