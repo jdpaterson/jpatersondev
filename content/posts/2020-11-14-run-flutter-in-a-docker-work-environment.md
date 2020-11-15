@@ -63,12 +63,29 @@ Let's update: `sudo apt-get update`
 
 Install java: `apt-get install default-jdk`
 
-The default sdkmanager settings expect the following directory structure: `~/Android/Sdk/cmdline-tools/latest/<cmd-linetools-unzip>`. So mk the dirs (`-p` flag creates parent directories if necessary): `mkdir -p ~/Android/Sdk/cmdline-tools/latest`
+The default sdkmanager settings expect the following directory structure: `~/Android/Sdk/cmdline-tools/latest/<cmd-linetools-unzip>`. So "mk" the "dirs" (`-p` flag creates parent directories if necessary): `mkdir -p ~/Android/Sdk/cmdline-tools/latest`
 
 Download commandline tools (link taken from the Android Studio downloads page, under CommandLineTools): `curl https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip -o /home/jubuntu/android-cmdlinetools.zip`
 
 Unzip cmdline tools: `unzip android-cmdline-tools.zip -d ~/andr-cmdline-tools`
-Move the tools to the latest folder: `mv ~/andr-cmdline-tools/cmdline-tools ~/Android/Sdk/cmdline-tools/latest`
+
+Move the tools to the "latest" folder: `mv ~/andr-cmdline-tools/cmdline-tools ~/Android/Sdk/cmdline-tools/latest`
 
 Add the following to .zshrc: `export PATH=$HOME/Android/Sdk/cmdline-tools/latest:$HOME/Android/Sdk/cmdline-tools/latest/bin:$PATH`
+
+Source your zshrc: `source ~/.zshrc`
+Now we should get some positive output from sdkmanager: `sdkmanager --list`
+
+```
+[=======================================] 100% Computing updates...
+Available Packages:
+  Path                                                                                     | Version      | Description
+  -------                                                                                  | -------      | -------
+  add-ons;addon-google_apis-google-15                                                      | 3            | Google APIs
+  add-ons;addon-google_apis-google-16                                                      | 4            | Google APIs
+...
+```
+
+Ok so let's install some sdk packages that we need, I'm currently using android-30: 
+`sdkmanage "build-tools;30.0.2" "sources;android-30" "platform-tools" "platforms;android-30"`
 
