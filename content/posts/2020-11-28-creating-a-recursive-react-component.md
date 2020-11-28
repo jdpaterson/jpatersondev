@@ -2,7 +2,7 @@
 template: post
 title: Creating a Recursive React Component
 slug: creating-a-recursive-react-component
-draft: true
+draft: false
 date: 2020-11-28T16:01:07.871Z
 description: I recently had the need (that turned into a want) to create a
   recursive React component. I would like to show it to you.
