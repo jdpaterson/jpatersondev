@@ -4,9 +4,9 @@ title: Creating a Recursive React Component
 slug: creating-a-recursive-react-component
 draft: true
 date: 2020-11-28T16:01:07.871Z
-description: I recently had the need to create a recursive React component. I
-  want to show it to you.
-category: Front-End Development
+description: I recently had the need (that turned into a want) to create a
+  recursive React component. I would like to show it to you.
+category: React
 tags:
   - react
   - front-end development
@@ -23,9 +23,9 @@ Ok well, turns out I didn't NEED to create this component, [it already exists](h
 
 tl;dr; you can check out the component [here](https://github.com/jdpaterson/react-collapse-object) , I was even feeling ambitious so I published it to NPM, go ahead and `npm install react-collapse-object` and bump up my npm weekly downloads counter if you're feeling gratuitous.
 
-Aaanyway, enough about me, what I want to show today is how the functional design of React naturally lends itself to creating recursive components. It shan't take long, so let's get to it. 
+Aaanyway, enough about me, what I want to show today is how the functional design of React naturally lends itself to creating recursive components. It shan't take long, I promise, so let's get to it. 
 
-What we are building, is a component that, when it is passed a JS object as a prop, it will render something that displays the root level of that object, and when the user clicks, the object will collapse and the user can then see the next level of properties of the object, and if the user clicks on one of those properties, if they are themselves objects or arrays, then they will collapse and display the next level properties, and so on, and so forth, until finally there are no child elements left to click. <- see? Recursion be the only suitable solution here. Also, if the property is NOT an object or an array, I need the user to be able to select the field, and the path to that selection will be stored in a state, with which I can then do what I want (ie print the list of all selected fields).
+What we are building, is a component that, when it is passed a JS object as a prop, it will render something that displays the root level of that object, and when the user clicks, the object will collapse and the user can then see the next level of properties of the object, and if the user clicks on one of those properties, if they are themselves objects or arrays, then they will collapse and display the next level properties, and so on, and so forth, until finally there are no child elements left to click. <- see? There is only one suitable solution here and recursion be thy name! Also, if the property is NOT an object or an array, I need the user to be able to select the field, and the path to that selection will be stored in a state, with which I can then do what I want (ie print the list of all selected fields).
 
 Ok so here is the parent component, 
 
@@ -69,9 +69,8 @@ Ok so that's the parent component, but we're here to see the recursive piece dan
 
 ![South Park impatient villagers with torches and pitchforks](/media/south-park-villagers.gif "South Park Villagers")
 
-Woah woah, easy. 
+Woah woah, easy... we'll get there!
 
-\
 The juicy bits come [here:](https://github.com/jdpaterson/react-collapse-object/blob/master/src/components/CollapseObject/index.tsx)
 
 ```
@@ -92,7 +91,7 @@ const CollapseObjectParser: React.FunctionComponent<TCollapseObjectParser> = (pr
     case 'object':
       if(Array.isArray(value)) {
         return (
-          /* Not this one... */
+          /* Not this one... we must venture deeper... */
           <Collapse
             isCollapsed={isCollapsed}
             onCollapse={() => {
@@ -106,7 +105,7 @@ const CollapseObjectParser: React.FunctionComponent<TCollapseObjectParser> = (pr
             {
               props.value.map(
                 (arrItem:unknown, index:number) => (
-                  /* Here it is! We render the <CollapseObjectParser /> component, which... is THIS component! Isn't that so cool!? Well I think so. So what will happen is we will render this component as a child of itself, and when the child renders, it will come through this same switch...case function, which will then determine what to render in the next iteration, it could be another CollapseObjectParser, or it could be one of the other values. Huzzah! We've done it! */
+                  /* Here it is! We render the <CollapseObjectParser /> component, which... is THIS component! Isn't that so cool!? Well I think so. So what will happen is we will render this component as a child of itself, and when the child renders, it will come through this same switch...case logic, which will then determine what to render in the next iteration, it could be another CollapseObjectParser, or it could be one of the other values. Huzzah! Sweet sweet recursive React components */
                   <CollapseObjectParser
                     key={uuid()}
                     { ...props }
@@ -160,3 +159,4 @@ const CollapseObjectParser: React.FunctionComponent<TCollapseObjectParser> = (pr
 }
 ```
 
+Ok well, not much else to say really, just wanted to show you that. If you have PROBLEM with how this was implemented, submit an issue to the [github repo.](https://github.com/jdpaterson/react-collapse-object/)  Thanks for reading!
