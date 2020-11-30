@@ -4,7 +4,7 @@ module.exports = {
   url: 'https://jpaterson.dev',
   pathPrefix: '/',
   title: 'Blog by J. Paterson',
-  subtitle: 'My learnings in web development.',
+  subtitle: 'This is less of a "this is how you do..." blog and more of a "how do you do...?" blog. So... how do you do?' ,
   copyright: '© All rights reserved.',
   disqusShortname: '',
   postsPerPage: 4,
@@ -27,7 +27,7 @@ module.exports = {
   author: {
     name: 'J. Paterson',
     photo: '/profile.jpg',
-    bio: 'I am a web developer living in beautiful Vancouver, BC. I work mainly with React, Rails, Node, GraphQL, and Docker, but I am interested in all things web related',
+    bio: 'I am a web developer living in beautiful Vancouver, BC. I work mainly with React, Node, Typescript, GraphQL, and Docker web/OS/networking related',
     contacts: {
       email: 'contact@jpatersondev.com',
       twitter: 'jaydp123',
