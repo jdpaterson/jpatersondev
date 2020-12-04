@@ -3,7 +3,7 @@ template: post
 title: "Jubuntu: My Docker Work Environment"
 slug: jubuntu-my-docker-work-environment
 draft: false
-date: 2020-11-01T21:11:13.244Z
+date: 2020-09-01T20:11:13.244Z
 description: "A detailed look at my custom Docker image that I use as a work
   environment: Jubuntu"
 category: Docker
